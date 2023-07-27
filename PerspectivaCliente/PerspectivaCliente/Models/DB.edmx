@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbEjemploModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_nom" Type="varchar" MaxLength="250" />
+          <Property Name="cat_desp" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="CategoriasInteres">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Ciudad" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PosibilidadesEconomicas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Rango" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Preferencias">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CategoriaID" Type="int" />
+          <Property Name="Preferencia" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Region" Type="varchar" MaxLength="100" />
+          <Property Name="CiudadID" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Edad" Type="int" />
+          <Property Name="Genero" Type="varchar" MaxLength="100" />
+          <Property Name="UbicacionID" Type="int" />
+          <Property Name="PosibilidadesEconomicasID" Type="int" />
+          <Property Name="PreferenciasID" Type="int" />
+        </EntityType>
+        <Association Name="FK__Preferenc__Categ__45F365D3">
+          <End Role="CategoriasInteres" Type="Self.CategoriasInteres" Multiplicity="0..1" />
+          <End Role="Preferencias" Type="Self.Preferencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasInteres">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Preferencias">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Region__CiudadID__4CA06362">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Region" Type="Self.Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Region">
+              <PropertyRef Name="CiudadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__Posibi__4F7CD00D">
+          <End Role="PosibilidadesEconomicas" Type="Self.PosibilidadesEconomicas" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PosibilidadesEconomicas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="PosibilidadesEconomicasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__Prefer__5070F446">
+          <End Role="Preferencias" Type="Self.Preferencias" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preferencias">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="PreferenciasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__Ubicac__5165187F">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="UbicacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbEjemploModelStoreContainer">
+          <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriasInteres" EntityType="Self.CategoriasInteres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PosibilidadesEconomicas" EntityType="Self.PosibilidadesEconomicas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preferencias" EntityType="Self.Preferencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Preferenc__Categ__45F365D3" Association="Self.FK__Preferenc__Categ__45F365D3">
+            <End Role="CategoriasInteres" EntitySet="CategoriasInteres" />
+            <End Role="Preferencias" EntitySet="Preferencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Region__CiudadID__4CA06362" Association="Self.FK__Region__CiudadID__4CA06362">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Region" EntitySet="Region" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__Posibi__4F7CD00D" Association="Self.FK__Usuarios__Posibi__4F7CD00D">
+            <End Role="PosibilidadesEconomicas" EntitySet="PosibilidadesEconomicas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__Prefer__5070F446" Association="Self.FK__Usuarios__Prefer__5070F446">
+            <End Role="Preferencias" EntitySet="Preferencias" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__Ubicac__5165187F" Association="Self.FK__Usuarios__Ubicac__5165187F">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbEjemploModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="categoria">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_nom" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="cat_desp" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CategoriasInteres">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Preferencias" Relationship="Self.FK__Preferenc__Categ__45F365D3" FromRole="CategoriasInteres" ToRole="Preferencias" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Ciudad1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Region" Relationship="Self.FK__Region__CiudadID__4CA06362" FromRole="Ciudad" ToRole="Region" />
+        </EntityType>
+        <EntityType Name="PosibilidadesEconomicas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Rango" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__Posibi__4F7CD00D" FromRole="PosibilidadesEconomicas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Preferencias">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CategoriaID" Type="Int32" />
+          <Property Name="Preferencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CategoriasInteres" Relationship="Self.FK__Preferenc__Categ__45F365D3" FromRole="Preferencias" ToRole="CategoriasInteres" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__Prefer__5070F446" FromRole="Preferencias" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Region1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CiudadID" Type="Int32" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK__Region__CiudadID__4CA06362" FromRole="Region" ToRole="Ciudad" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__Ubicac__5165187F" FromRole="Region" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Edad" Type="Int32" />
+          <Property Name="Genero" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UbicacionID" Type="Int32" />
+          <Property Name="PosibilidadesEconomicasID" Type="Int32" />
+          <Property Name="PreferenciasID" Type="Int32" />
+          <NavigationProperty Name="PosibilidadesEconomicas" Relationship="Self.FK__Usuarios__Posibi__4F7CD00D" FromRole="Usuarios" ToRole="PosibilidadesEconomicas" />
+          <NavigationProperty Name="Preferencias" Relationship="Self.FK__Usuarios__Prefer__5070F446" FromRole="Usuarios" ToRole="Preferencias" />
+          <NavigationProperty Name="Region" Relationship="Self.FK__Usuarios__Ubicac__5165187F" FromRole="Usuarios" ToRole="Region" />
+        </EntityType>
+        <Association Name="FK__Preferenc__Categ__45F365D3">
+          <End Role="CategoriasInteres" Type="Self.CategoriasInteres" Multiplicity="0..1" />
+          <End Role="Preferencias" Type="Self.Preferencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriasInteres">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Preferencias">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Region__CiudadID__4CA06362">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Region" Type="Self.Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Region">
+              <PropertyRef Name="CiudadID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__Posibi__4F7CD00D">
+          <End Role="PosibilidadesEconomicas" Type="Self.PosibilidadesEconomicas" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PosibilidadesEconomicas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="PosibilidadesEconomicasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__Prefer__5070F446">
+          <End Role="Preferencias" Type="Self.Preferencias" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preferencias">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="PreferenciasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__Ubicac__5165187F">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="UbicacionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbEjemploEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="categoria" EntityType="Self.categoria" />
+          <EntitySet Name="CategoriasInteres" EntityType="Self.CategoriasInteres" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="PosibilidadesEconomicas" EntityType="Self.PosibilidadesEconomicas" />
+          <EntitySet Name="Preferencias" EntityType="Self.Preferencias" />
+          <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK__Preferenc__Categ__45F365D3" Association="Self.FK__Preferenc__Categ__45F365D3">
+            <End Role="CategoriasInteres" EntitySet="CategoriasInteres" />
+            <End Role="Preferencias" EntitySet="Preferencias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Region__CiudadID__4CA06362" Association="Self.FK__Region__CiudadID__4CA06362">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Region" EntitySet="Region" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__Posibi__4F7CD00D" Association="Self.FK__Usuarios__Posibi__4F7CD00D">
+            <End Role="PosibilidadesEconomicas" EntitySet="PosibilidadesEconomicas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__Prefer__5070F446" Association="Self.FK__Usuarios__Prefer__5070F446">
+            <End Role="Preferencias" EntitySet="Preferencias" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__Ubicac__5165187F" Association="Self.FK__Usuarios__Ubicac__5165187F">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbEjemploModelStoreContainer" CdmEntityContainer="dbEjemploEntities">
+          <EntitySetMapping Name="categoria">
+            <EntityTypeMapping TypeName="dbEjemploModel.categoria">
+              <MappingFragment StoreEntitySet="categoria">
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="cat_nom" ColumnName="cat_nom" />
+                <ScalarProperty Name="cat_desp" ColumnName="cat_desp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriasInteres">
+            <EntityTypeMapping TypeName="dbEjemploModel.CategoriasInteres">
+              <MappingFragment StoreEntitySet="CategoriasInteres">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="dbEjemploModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ciudad1" ColumnName="Ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PosibilidadesEconomicas">
+            <EntityTypeMapping TypeName="dbEjemploModel.PosibilidadesEconomicas">
+              <MappingFragment StoreEntitySet="PosibilidadesEconomicas">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Rango" ColumnName="Rango" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preferencias">
+            <EntityTypeMapping TypeName="dbEjemploModel.Preferencias">
+              <MappingFragment StoreEntitySet="Preferencias">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="Preferencia" ColumnName="Preferencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Region">
+            <EntityTypeMapping TypeName="dbEjemploModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Region1" ColumnName="Region" />
+                <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="dbEjemploModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="UbicacionID" ColumnName="UbicacionID" />
+                <ScalarProperty Name="PosibilidadesEconomicasID" ColumnName="PosibilidadesEconomicasID" />
+                <ScalarProperty Name="PreferenciasID" ColumnName="PreferenciasID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

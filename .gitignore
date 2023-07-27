@@ -605,3 +605,27 @@ coverage/
 
 # .vscode
 .vscode/
+
+
+# Extensiones de imágenes
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.ico
+
+# Archivos de Excel
+*.xlsx
+*.xlsm
+*.xlsb
+
+# Archivos CSV
+*.csv
+
+# Otros tipos de archivos
+*.pdf
+*.docx
+*.pptx
+*.zip
+*.rar
