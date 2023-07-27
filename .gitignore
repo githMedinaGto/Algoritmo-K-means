@@ -396,3 +396,212 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Archivos y carpetas generados por el sistema operativo
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pywz
+.DS_Store
+Thumbs.db
+
+# Entorno virtual de Python (por ejemplo, creado con virtualenv o venv)
+venv/
+env/
+ENV/
+
+# Archivos generados por herramientas de construcción
+build/
+dist/
+*.egg-info/
+*.egg
+*.egg-info
+*.pyc
+
+# Archivos de registro y salida
+*.log
+*.bak
+*.swp
+*.out
+
+# Archivos de configuración específicos de IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Archivos y carpetas generados por Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Archivos de caché y configuración de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pywz
+*.pyc
+
+# Archivos de caché y configuración de pip
+pip-wheel-metadata/
+pip-compile-*
+
+# Entorno virtual de Pipenv
+Pipfile.lock
+
+# Documentación generada automáticamente
+docs/_build/
+
+# Archivos de registro de dependencias
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Archivos de caché de pytest
+pytest_cache/
+
+# Archivos de registro de testeo
+test.log
+
+# Archivos de cobertura
+.coverage
+.coverage.*
+htmlcov/
+
+# Archivos y carpetas específicos de proyectos (ajusta esta sección según tus necesidades)
+my_project_config.ini
+secret_keys.py
+media/
+
+# Si utilizas Jupyter Notebooks, es posible que también quieras omitir los siguientes
+# para evitar guardar outputs y resultados innecesarios:
+# *.ipynb
+# .ipynb_checkpoints/
+
+# Si trabajas con entornos específicos de desarrollo o servicios de nube, también puedes
+# considerar omitir ciertos archivos y carpetas según tus necesidades.
+# Carpeta de salida de compilación
+/bin/
+/obj/
+
+# Archivos de configuración específicos del usuario
+*.user
+*.suo
+*.userprefs
+*.bak
+
+# Archivos de caché y resultados de compilación
+*.cache
+*.log
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.sdf
+*.opensdf
+*.scc
+*.tlb
+*.tlh
+*.bak
+*.obj
+*.pch
+*.idb
+*.pdb
+*.ipch
+*.bak
+*.suo
+*.sln.docstates
+
+# Archivos de caché de ReSharper
+_ReSharper.*/
+
+# Archivos de caché de CodeRush
+.cr/
+
+# Archivos de caché de Visual Studio
+ipch/
+*.ncb
+*.sdf
+*.suo
+*.tlb
+*.dll
+*.pdb
+*.idb
+*.exe
+*.obj
+*.vshost.*
+*.user
+*.manifest
+*.msi
+*.log
+*.tlog
+*.xls
+*.swp
+*.tmp
+*.htm
+*.user
+*.suo
+TestResults/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+
+# Directorios de herramientas
+_ReSharper*/
+_CodeAnalysis/
+TestResults/
+[Tt]est[Rr]esult*/
+*.VisualState.xml
+Version.cs
+_Version.cs
+*.[Pp]ublish.xml
+*.deploy
+*.testsettings
+_buildlogs/
+[Bb]uild[Ll]og.*
+
+# Carpeta de configuración de IIS Express
+.vs/config/
+
+# Carpeta de implementación web
+WebDeploy/
+
+# Node.js / npm
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+yarn.lock
+
+# .NET Core
+project.lock.json
+.project.json.merge*
+*.nuget.props
+*.nuget.targets
+
+# Caché de NuGet
+*.nupkg
+packages/
+*.pfx
+*.snk
+
+# Carpeta de paquetes de herramientas
+tools/
+
+# Carpeta de paquetes
+*.zip
+*.7z
+
+# Carpeta de informes generados automáticamente
+Reports/
+
+# Carpeta de cobertura generada automáticamente
+coverage/
+*.opencover.xml
+*.dotCover
+
+# .vscode
+.vscode/
