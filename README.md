@@ -1,7 +1,17 @@
 # Algoritmo-K-means
 Se hace un ejemplo del uso del algoritmo de k-means con una aplicación web y una api en python
 
-Breve descripción del proyecto.
+## Proyecto K-Means
+
+Este proyecto consiste en una API y una aplicación web que implementan el algoritmo de agrupamiento K-Means. La API está desarrollada en Python utilizando el framework FastAPI, mientras que la aplicación web está desarrollada en ASP.NET.
+
+La API proporciona endpoints(ver Anexo1) para cargar archivos Excel, procesar los datos utilizando el algoritmo K-Means y obtener los resultados de los grupos generados. Los datos del archivo Excel se transforman y se utilizan diferentes combinaciones de columnas para realizar el agrupamiento. Los resultados se devuelven en forma de archivos CSV y gráficos interactivos.
+
+La aplicación web permite a los usuarios interactuar con la API de manera intuitiva a través de una interfaz gráfica. Los usuarios pueden cargar archivos Excel, seleccionar las columnas para el agrupamiento y visualizar los resultados en forma de gráficos de dispersión, gráficos de barras agrupadas, mapas de calor, gráficos de sectores, gráficos de burbujas y gráficos de líneas.
+
+El proyecto utiliza bibliotecas populares como pandas, seaborn y matplotlib para el procesamiento de datos y la visualización. Además, se implementa la función de transformación de variables para ajustar los datos antes de aplicar el algoritmo K-Means.
+
+Este proyecto es ideal para aquellos interesados en el análisis de datos y la implementación de algoritmos de aprendizaje automático. Proporciona una solución completa para realizar agrupamientos utilizando el algoritmo K-Means con diferentes combinaciones de columnas y visualizar los resultados de manera interactiva.
 
 ## Estructura del Proyecto
 
@@ -54,3 +64,10 @@ Sigue los siguientes pasos para ejecutar la aplicación web:
    - `password`: Es la contraseña del usuario.
 
 5. Ejecuta la aplicación web desde Visual Studio 2022.
+
+## Anexo
+
+### Anexo 1
+<b>Endpoints :</b> son direcciones URL específicas, a las que se pueden enviar solicitudes HTTP para interactuar con el sistema. Cada endpoint está asociado con una operación o función específica, como cargar datos, ejecutar el algoritmo K-Means y obtener los resultados de los grupos generados.
+
+Estos endpoints permiten a los usuarios enviar y recibir datos de manera estructurada, lo que facilita la comunicación entre la aplicación web y la API. Al utilizar estos endpoints, los usuarios pueden realizar diversas acciones y obtener los resultados deseados de manera eficiente y segura.
